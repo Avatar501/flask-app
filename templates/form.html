@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter un Employé</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <form action="/add-employe" method="post">
+        <h1>Ajouter un Employé</h1>
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" placeholder="Entrez le nom" required>
+
+        <label for="departement">Département :</label>
+        <input type="text" id="departement" name="departement" placeholder="Entrez le département" required>
+
+        <label for="salaire">Salaire :</label>
+        <input type="number" min="3000" step="500" id="salaire" name="salaire" placeholder="Entrez le salaire" required>
+
+        <label for="dateEmbauche">Date d'embauche :</label>
+        <input type="date" id="dateEmbauche" name="dateEmbauche" required>
+
+        <button type="submit">Ajouter</button>
+        <div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                <ul>
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+    </form>
+</body>
+
+</html>
